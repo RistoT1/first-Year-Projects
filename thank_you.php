@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Thank you for booked time</h2>
+    <h2>Your time is at
+        <?php
+            session_start();
+            $time = $_SESSION['bookedtime'] ?? '';
+
+            echo htmlspecialchars($time);
+        ?>
+    </h2>
+</body>
+
+</html>
