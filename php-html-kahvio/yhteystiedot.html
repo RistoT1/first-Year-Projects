@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahvio - Yhteystiedot</title>
+    <!-- Only include one version of Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Proper order: jQuery first, then Bootstrap JS (only include once) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+        /* Apply the background image to the entire body */
+        background-image:
+            linear-gradient(135deg, rgba(149, 200, 247, 0.171), rgba(247, 154, 193, 0.445)),
+            url("https://images.pexels.com/photos/6692150/pexels-photo-6692150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        /* This keeps the background fixed while scrolling */
+    }
+
+    .navbar {
+        background: linear-gradient(90deg, rgba(253, 133, 54, 0.575), rgba(231, 209, 175, 0.582)) !important;
+    }
+
+    .contact-container {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .navbar-collapse {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-nav {
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: auto;
+        flex: 1;
+    }
+
+    @media (max-width: 992px) {
+        .navbar-nav {
+            margin-left: 0;
+        }
+    }
+
+    .yhteistieto-container {
+        padding: 40px;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .yhteistieto-container h1 {
+        color: rgb(243, 144, 15);
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .yhteistiedot {
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(243, 144, 15, 0.3);
+    }
+
+    .yhteistiedot h3 {
+        color: rgb(243, 144, 15);
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .yhteistieto-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 8px;
+        border-radius: 10px;
+        transition: background-color 0.2s;
+    }
+
+    .yhteistieto-item:hover {
+        background-color: rgba(243, 144, 15, 0.05);
+    }
+
+    .yhteistieto-item i {
+        margin-right: 15px;
+        color: rgb(243, 144, 15);
+        font-size: 1.5rem;
+    }
+
+    .yhteistieto-item .label {
+        font-weight: 600;
+        color: #333;
+        width: 120px;
+    }
+
+    .yhteistieto-item .value {
+        color: #707070;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(216, 134, 11, 0.281) !important;
+        z-index: 1;
+        opacity: 0.8;
+        padding: 8px;
+        transition: opacity 0.3s ease;
+        border-radius: 4px;
+    }
+
+
+    .title-container {
+        text-align: center;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 500px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, rgba(253, 133, 54, 0.2), rgba(231, 209, 175, 0.3));
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+     .navbar-brand {
+        margin-right: 1rem !important;
+        padding-right: 100px!important;
+        display: block!important;
+        float: left!important;
+    }
+
+    .logo-left {
+        position: relative!important;
+        left: 0!important;
+        text-align: left!important;
+        float: left!important;
+    }
+
+    .navbar-nav.ml-auto {
+        margin-left: auto !important;
+    }
+
+
+    .main-title {
+        font-family: 'Georgia', serif;
+        color: rgb(243, 144, 15);
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        font-size: 1.5rem;
+        font-style: italic;
+        position: relative;
+        display: inline-block;
+    }
+
+    .subtitle::before,
+    .subtitle::after {
+        content: "";
+        height: 2px;
+        width: 30px;
+        background: linear-gradient(90deg, transparent, rgb(243, 144, 15), transparent);
+        position: absolute;
+        top: 50%;
+    }
+
+    .subtitle::before {
+        right: 105%;
+    }
+
+    .subtitle::after {
+        left: 105%;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        border: 1px solid rgba(243, 144, 15, 0.3);
+        padding: 10px 15px;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 0 0.2rem rgba(243, 144, 15, 0.25);
+        border-color: rgb(243, 144, 15);
+    }
+
+    .btn-submit {
+        background: linear-gradient(90deg, rgba(253, 133, 54, 0.8), rgba(243, 144, 15, 0.9));
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(90deg, rgba(243, 144, 15, 0.9), rgba(253, 133, 54, 0.8));
+    }
+
+    .contact-form h3 {
+        color: rgb(243, 144, 15);
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .map-container {
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+        margin-top: 30px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #707070;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .yhteistieto-container {
+            padding: 25px 15px;
+        }
+
+        .yhteistieto-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .yhteistieto-item .label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="navbar-brand logo-left" style="font-weight: bold; font-size: 25px; padding-right: 100px; margin: 0; float: left;">Kahvio</div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link" href="index.html">Koti</a>
+                    <a class="nav-link" href="index.html#hinnasto#tietoja">Tietoja</a>
+                    <a class="nav-link" href="index.html#hinnasto">Hinnasto</a>
+                    <a class="nav-link active" href="yhteystiedot.html">Yhteystiedot <span class="sr-only">(current)</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container-fluid p-0">
+            <div class="title-container">
+                <div class="main-title">Laatu kahvia</div>
+                <div class="subtitle">Vuodesta 2025</div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12 contact-container">
+                    <div class="yhteistieto-container">
+                        <h1>Yhteystiedot</h1>
+                        
+                        <div class="yhteistiedot">
+                            <h3>Löydät meidät täältä</h3>
+                            <div class="yhteistieto-item">
+                                <div class="label">Osoite:</div>
+                                <div class="value">Hehkukatu 1, 70210 Kuopio</div>
+                            </div>
+                            <div class="yhteistieto-item">
+                                <div class="label">Puhelin:</div>
+                                <div class="value">044 123 4567</div>
+                            </div>
+                            <div class="yhteistieto-item">
+                                <div class="label">Sähköposti:</div>
+                                <div class="value">info@kahvio.fi</div>
+                            </div>
+                            <div class="yhteistieto-item">
+                                <div class="label">Aukioloajat:</div>
+                                <div class="value">Ma-Pe: 8:00-20:00, La-Su: 10:00-18:00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>Ota yhteyttä</h3>
+                            <form action="yhteystiedot.php" method="post">
+                                <div class="form-group">
+                                    <label for="name">Nimi</label>
+                                    <input type="text" class="form-control" name="nimi" id="nimi" placeholder="Kirjoita nimesi">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Sähköposti</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Kirjoita sähköpostiosoitteesi">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Viesti</label>
+                                    <textarea class="form-control" name="viesti" id="viesti" rows="4" placeholder="Kirjoita viestisi"></textarea>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-submit">Lähetä viesti</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1818.273775097889!2d27.62463264344439!3d62.888185310665186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4684b08e77fbef51%3A0xa858526505e350f0!2sSavon%20ammattiopisto!5e0!3m2!1sfi!2sfi!4v1743839247544!5m2!1sfi!2sfi"
+                                    width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
